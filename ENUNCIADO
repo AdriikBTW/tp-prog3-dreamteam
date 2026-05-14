@@ -1,0 +1,57 @@
+Programación III - TP 3
+=======================
+
+Enunciado
+---------
+
+Nos encontramos en el departamento de recursos humanos de una software factory,
+y tenemos que diseñar un grupo de desarrollo para un nuevo proyecto.
+
+Tenemos una lista de personas, cada una con un rol posible (que puede ser
+“líder de proyecto”, “arquitecto”, “programador” o “tester”) y una calificación
+histórica por su desempeño que es un número entre 1 y 5 (cuanto más grande es
+el número, mejor calificada está la persona). Se cuenta con una lista de pares
+de personas que en el pasado han tenido inconvenientes al trabajar juntas. Si
+dos personas están en esta lista, decimos que son incompatibles. Tenemos además
+una cantidad de personas en cada rol (por ejemplo, necesitamos un líder de
+proyecto, dos arquitectos, 4 programadores y 5 testers). Debemos encontrar un
+conjunto lo más calificado posible de personas que cumpla estos requerimientos,
+y que no contenga ningún par de personas incompatibles.
+
+El objetivo del trabajo práctico es implementar una aplicación para resolver
+esta problemática. La aplicación debe contar con la siguiente funcionalidad:
+
+* Cargar y visualizar las personas disponibles.
+* Cargar y visualizar las incompatibilidades.
+* Cargar y visualizar los requerimientos para el equipo.
+* Resolver el problema y visualizar el equipo resultante.
+
+Se debe resolver el problema por medio de un algoritmo de fuerza bruta o
+backtracking, que debe ejecutar en un thread separado de la aplicación
+principal.
+
+Como objetivos opcionales no obligatorios, se pueden contemplar los siguientes
+elementos:
+
+1. Mostrar estadísticas del algoritmo de fuerza bruta, incluyendo cantidad de
+veces que ejecutó el caso base, tiempo total, etc.
+2. Implementar también una heurística para el problema, y comparar las dos
+soluciones.
+3. Registrar una foto de cada persona, y mostrar el grupo obtenido con las
+fotos de las personas seleccionadas.
+
+Condiciones de entrega
+----------------------
+
+El trabajo práctico se debe entregar por mail a los docentes de la materia.
+Además del código, se debe incluir un documento en el que se describa la
+implementación y se detallen las decisiones tomadas durante el desarrollo. El
+código responsable del funcionamiento de la aplicación debe estar claramente
+separado del código responsable de la interfaz. Todas las clases de negocio
+deben tener tests unitarios. El trabajo práctico se debe hacer en grupos de
+tres o de cuatro personas.
+
+Fecha de entrega
+----------------
+
+Martes 9 de junio.

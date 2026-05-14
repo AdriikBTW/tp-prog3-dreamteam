@@ -1,0 +1,14 @@
+= TP Programación III: El equipo ideal
+Adrián Romero; Emiliano Carrasco; Lautaro Romero; Nahuel Lopez
+:revdate: {docdate}
+:revremark: COM-02
+:title-page:
+:title-logo-image: image::ungs.jpg[]
+
+== Lorem Ipsum
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse finibus convallis velit, efficitur mattis massa dictum nec. Nulla sollicitudin nec eros ac pellentesque. Nulla dictum elit sit amet aliquam sagittis. Fusce metus nunc, rhoncus non neque id, eleifend elementum urna. Vestibulum ut neque sit amet sem laoreet efficitur. Mauris arcu orci, sollicitudin sed venenatis elementum, fermentum at felis. Maecenas quis augue posuere nibh congue tempor ut in odio. Duis ut quam rutrum, pharetra ex non, sollicitudin sapien. Maecenas eget nisi in tortor tempus aliquet.
+
+Maecenas euismod enim eu fermentum porta. Proin ultrices mauris nibh, et tristique est rhoncus et. Mauris vulputate, quam ac iaculis rutrum, augue quam rutrum ligula, non tincidunt est mauris vel turpis. In quam sem, commodo nec feugiat ac, consectetur id eros. Nunc a odio lectus. Donec tempor tellus ut tellus dapibus pharetra. Vestibulum vel risus dolor. Ut pharetra viverra lectus, ornare convallis velit lacinia vitae.
+
+Cras eleifend ex orci, eget sollicitudin arcu egestas at. Suspendisse nec tristique ante. Maecenas mollis nisi a ante pretium vestibulum. Maecenas eu est mi. Duis non tellus quis lorem finibus porttitor vel a nisl. Donec efficitur luctus justo. Vivamus laoreet sit amet nulla non tristique. Mauris blandit non mauris condimentum venenatis. Nunc placerat varius turpis, ac commodo nisi fringilla et. Duis elementum nec mauris vitae consequat. 
