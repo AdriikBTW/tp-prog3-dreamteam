@@ -5,13 +5,13 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.io.InputStream;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.UIManager;
 import prog3.tp.presenter.Presenter;
 
-public class Window implements View {
+public class Window implements View, ToolbarListener {
     private Presenter _presenter;
     private JFrame _frame;
+    private Toolbar _toolbar;
     private Font _font;
 
     public Window() {
@@ -42,7 +42,9 @@ public class Window implements View {
 
     private void initialize() {
         setUpFrame();
-        _frame.add(new JLabel("Hello there!"), BorderLayout.CENTER);
+        setUpToolbar();
+
+        _frame.add(_toolbar, BorderLayout.PAGE_START);
     }
 
     private void setUpFrame() {
@@ -52,8 +54,23 @@ public class Window implements View {
         _frame.setLayout(new BorderLayout());
     }
 
+    private void setUpToolbar() {
+        _toolbar = new Toolbar(this);
+        _toolbar.setFontForButtons(_font);
+    }
+
+    @Override
+    public void onEmployeeAdded(String name, String role, int calification) {
+        _presenter.addEmployee(name, role, calification);
+    }
+
     @Override
     public void setPresenter(Presenter presenter) {
         _presenter = presenter;
+    }
+
+    @Override
+    public void update() {
+        // TODO: implement logic
     }
 }

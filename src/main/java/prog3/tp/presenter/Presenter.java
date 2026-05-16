@@ -15,6 +15,12 @@ public class Presenter implements Observer {
         _model.addObserver(this);
     }
 
+    public void addEmployee(String name, String role, int calification) {
+        _model.addEmployee(name, role, calification);
+    }
+
     @Override
-    public void update() {}
+    public void update() {
+        // TODO: implement logic
+    }
 }

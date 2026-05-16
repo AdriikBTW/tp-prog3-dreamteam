@@ -4,4 +4,6 @@ import prog3.tp.presenter.Presenter;
 
 public interface View {
     public void setPresenter(Presenter presenter);
+
+    public void update();
 }
