@@ -8,7 +8,7 @@ Nos encontramos en el departamento de recursos humanos de una software factory,
 y tenemos que diseñar un grupo de desarrollo para un nuevo proyecto.
 
 Tenemos una lista de personas, cada una con un rol posible (que puede ser
-“líder de proyecto”, “arquitecto”, “programador” o “tester”) y una calificación
+"líder de proyecto", "arquitecto", "programador" o "tester") y una calificación
 histórica por su desempeño que es un número entre 1 y 5 (cuanto más grande es
 el número, mejor calificada está la persona). Se cuenta con una lista de pares
 de personas que en el pasado han tenido inconvenientes al trabajar juntas. Si
@@ -34,11 +34,11 @@ Como objetivos opcionales no obligatorios, se pueden contemplar los siguientes
 elementos:
 
 1. Mostrar estadísticas del algoritmo de fuerza bruta, incluyendo cantidad de
-veces que ejecutó el caso base, tiempo total, etc.
+   veces que ejecutó el caso base, tiempo total, etc.
 2. Implementar también una heurística para el problema, y comparar las dos
-soluciones.
+   soluciones.
 3. Registrar una foto de cada persona, y mostrar el grupo obtenido con las
-fotos de las personas seleccionadas.
+   fotos de las personas seleccionadas.
 
 Condiciones de entrega
 ----------------------
@@ -54,4 +54,4 @@ tres o de cuatro personas.
 Fecha de entrega
 ----------------
 
-Martes 9 de junio.
+Jueves 11 de junio.
