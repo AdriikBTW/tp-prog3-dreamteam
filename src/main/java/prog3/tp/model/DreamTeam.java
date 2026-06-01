@@ -7,57 +7,47 @@ import prog3.tp.presenter.Observer;
 
 public class DreamTeam implements Model {
     private Observer _observer;
-    private List<Employee> employees;
+    private List<Employee> _employees;
     private List<Incompatibility> List_incompatibility;
-    private EnumMap<Role, Integer> _requirements = new EnumMap<>(Role.class);
+    private EnumMap<Role, Integer> _requirements;
 
     public DreamTeam() {
-        employees = new ArrayList<>();
+        _employees = new ArrayList<>();
         List_incompatibility = new ArrayList<>();
+        _requirements = new EnumMap<>(Role.class);
     }
 
     public void addEmployee(String name, String role, int calification) {
         Employee newEmployee = new Employee(name, stringToRole(role), calification);
-        employees.add(newEmployee);
+        _employees.add(newEmployee);
 
         _observer.update();
     }
     
     
     public void addIncompatibility(Employee E1,Employee E2) {
+        if(!_employees.contains(E1) || !_employees.contains(E2)) {
+            throw new IllegalArgumentException();
+        }
+        
     	Incompatibility incompatibles = new Incompatibility(E1,E2);
     	List_incompatibility.add(incompatibles);
-    }
-    
-    public void addRequirement(Role role, int cant) {
-       if(cant < 0) {
-           throw new IllegalArgumentException();
-       }
-       
-       if(_requirements.containsKey(role)) {
-           _requirements.replace(role, cant);
-           return;
-       }
-       
-       _requirements.put(role, cant);
-    }
+    }   
     
     public void setRequirement(Role role, int count) {
-        if (_requirements == null)
-            _requirements = new EnumMap<>(Role.class);
-        
         if(count < 0) {
             throw new IllegalArgumentException();
         }
         
-        if(_requirements.containsKey(role)) {
-           throw new IllegalArgumentException();
-        }
-        
-        
         _requirements.put(role, count);  
     }
     
+    public int getRequiredCount(Role role) {
+        if(_requirements.containsKey(role)) {
+            return _requirements.get(role);
+        }
+        else return 0; 
+    }
 
     private Role stringToRole(String role) {
         Role r;
@@ -80,6 +70,14 @@ public class DreamTeam implements Model {
         }
 
         return r;
+    }
+    
+    public List<Employee> getEmployees() {
+        return _employees;
+    }
+    
+    public List<Incompatibility> getIncompatibilities(){
+        return List_incompatibility;
     }
     
 

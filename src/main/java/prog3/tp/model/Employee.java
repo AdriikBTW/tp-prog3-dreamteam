@@ -1,25 +1,44 @@
 package prog3.tp.model;
 
-class Employee {
+import java.util.Objects;
+
+public class Employee {
     private String _name;
     private Role _role;
     private int _calification;
 
-    Employee(String name, Role role, int calification) {
+    public Employee(String name, Role role, int calification) {
         _name = name;
         _role = role;
         _calification = calification;
     }
 
-    String getName() {
+    public String getName() {
         return _name;
     }
 
-    Role getRole() {
+    public Role getRole() {
         return _role;
     }
 
-    int getCalification() {
+    public int getCalification() {
         return _calification;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Employee)) return false;
+
+        Employee other = (Employee) obj;
+
+        return _calification == other._calification &&
+               Objects.equals(_name, other._name) &&
+               _role == other._role;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(_name, _role, _calification);
     }
 }
