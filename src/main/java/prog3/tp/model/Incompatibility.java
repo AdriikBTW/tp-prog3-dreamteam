@@ -17,9 +17,10 @@ public class Incompatibility {
 		
 		 List <Employee>  ret = new ArrayList<>();
 		 
-		 ret.add(_employee1);  
-		 ret.add(_employee2);
+		 ret.add(this._employee1);  
+		 ret.add(this._employee2);
 		 
 		 return ret;
 	}
+	
 }

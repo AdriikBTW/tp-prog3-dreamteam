@@ -7,9 +7,11 @@ import prog3.tp.presenter.Observer;
 public class DreamTeam implements Model {
     private Observer _observer;
     private List<Employee> employees;
+    private List<Incompatibility> List_incompatibility;
 
     public DreamTeam() {
         employees = new ArrayList<>();
+        List_incompatibility = new ArrayList<>();
     }
 
     public void addEmployee(String name, String role, int calification) {
@@ -18,6 +20,13 @@ public class DreamTeam implements Model {
 
         _observer.update();
     }
+    
+    
+    public void addIncompatibility(Employee E1,Employee E2) {
+    	Incompatibility incompatibles = new Incompatibility(E1,E2);
+    	List_incompatibility.add(incompatibles);
+    }
+    
 
     private Role stringToRole(String role) {
         Role r;
@@ -41,6 +50,7 @@ public class DreamTeam implements Model {
 
         return r;
     }
+    
 
     @Override
     public void addObserver(Observer observer) {
