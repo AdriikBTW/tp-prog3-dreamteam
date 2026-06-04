@@ -77,6 +77,11 @@ public class Window implements View, ToolbarListener {
     }
 
     @Override
+    public void onRequirementsAdded(int arquitectAmount, int programmerAmount, int teamLeaderAmount, int testerAmount) {
+        // TODO: implement logic
+    }
+
+    @Override
     public void setPresenter(Presenter presenter) {
         _presenter = presenter;
     }

@@ -9,6 +9,7 @@ import javax.swing.JToolBar;
 class Toolbar extends JToolBar {
     private ToolbarButton _employeeButton;
     private ToolbarButton _incompatibilityButton;
+    private ToolbarButton _requirementsButton;
     private ToolbarListener _listener;
 
     public Toolbar(ToolbarListener listener) {
@@ -20,9 +21,11 @@ class Toolbar extends JToolBar {
     private void initButtons() {
         initEmployeeButton();
         initIncompatibilitiesButton();
+        initRequirementsButton();
 
         this.add(_employeeButton);
         this.add(_incompatibilityButton);
+        this.add(_requirementsButton);
     }
 
     void setFontForButtons(Font font) {
@@ -77,6 +80,31 @@ class Toolbar extends JToolBar {
                 showMessageError("Select different employees.");
             else
                 _listener.onIncompatibilityAdded(firstEmployee, secondEmployee);
+        }
+    }
+
+    private void initRequirementsButton() {
+        _requirementsButton = new ToolbarButton("");
+        _requirementsButton.setToolTipText("Add requirements.");
+        _requirementsButton.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        addRequirements();
+                    }
+                });
+    }
+
+    private void addRequirements() {
+        RequirementsDialogPane dialog = new RequirementsDialogPane("Requirements");
+
+        if (dialog.showDialog() == JOptionPane.OK_OPTION) {
+            int arquitectAmount = dialog.getArquitectAmount();
+            int programmerAmount = dialog.getProgrammerAmount();
+            int teamLeaderAmount = dialog.getTeamLeaderAmount();
+            int testerAmount = dialog.getTesterAmount();
+
+            _listener.onRequirementsAdded(arquitectAmount, programmerAmount, teamLeaderAmount, testerAmount);
         }
     }
 
