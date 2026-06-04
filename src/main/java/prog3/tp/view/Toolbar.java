@@ -8,6 +8,7 @@ import javax.swing.JToolBar;
 
 class Toolbar extends JToolBar {
     private ToolbarButton _employeeButton;
+    private ToolbarButton _incompatibilityButton;
     private ToolbarListener _listener;
 
     public Toolbar(ToolbarListener listener) {
@@ -18,8 +19,10 @@ class Toolbar extends JToolBar {
 
     private void initButtons() {
         initEmployeeButton();
+        initIncompatibilitiesButton();
 
         this.add(_employeeButton);
+        this.add(_incompatibilityButton);
     }
 
     void setFontForButtons(Font font) {
@@ -48,6 +51,32 @@ class Toolbar extends JToolBar {
             else
                 _listener.onEmployeeAdded(
                         dialog.getName(), dialog.getRole(), dialog.getCalification());
+        }
+    }
+
+    private void initIncompatibilitiesButton() {
+        _incompatibilityButton = new ToolbarButton("󰌺");
+        _incompatibilityButton.setToolTipText("Add new incompatibility.");
+        _incompatibilityButton.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        addNewIncompatibility();
+                    }
+                });
+    }
+
+    private void addNewIncompatibility() {
+        IncompatibilitiesDialogPane dialog = new IncompatibilitiesDialogPane("New incompatibility");
+
+        if (dialog.showDialog() == JOptionPane.OK_OPTION) {
+            String firstEmployee = dialog.getFirstEmployee();
+            String secondEmployee = dialog.getSecondEmployee();
+
+            if (firstEmployee.equals(secondEmployee))
+                showMessageError("Select different employees.");
+            else
+                _listener.onIncompatibilityAdded(firstEmployee, secondEmployee);
         }
     }
 
