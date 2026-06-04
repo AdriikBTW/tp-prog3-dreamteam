@@ -12,6 +12,7 @@ public class Window implements View, ToolbarListener {
     private Presenter _presenter;
     private JFrame _frame;
     private Toolbar _toolbar;
+    private TabMenu _tabs;
     private Font _font;
 
     public Window() {
@@ -43,8 +44,10 @@ public class Window implements View, ToolbarListener {
     private void initialize() {
         setUpFrame();
         setUpToolbar();
+        setUpTabs();
 
         _frame.add(_toolbar, BorderLayout.PAGE_START);
+        _frame.add(_tabs);
     }
 
     private void setUpFrame() {
@@ -57,6 +60,10 @@ public class Window implements View, ToolbarListener {
     private void setUpToolbar() {
         _toolbar = new Toolbar(this);
         _toolbar.setFontForButtons(_font);
+    }
+
+    private void setUpTabs() {
+        _tabs = new TabMenu();
     }
 
     @Override
