@@ -36,11 +36,7 @@ class EmployeeDialogPane extends ToolbarDialogPane {
     private void initCalificationField() {
 
         String[] items = {
-                "★",
-                "★★",
-                "★★★",
-                "★★★★",
-                "★★★★★",
+            "★", "★★", "★★★", "★★★★", "★★★★★",
         };
         _calification = new JComboBox<>(items);
     }

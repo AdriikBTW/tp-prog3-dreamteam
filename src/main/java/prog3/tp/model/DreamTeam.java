@@ -23,30 +23,28 @@ public class DreamTeam implements Model {
 
         _observer.update();
     }
-    
-    
-    public void addIncompatibility(Employee E1,Employee E2) {
-        if(!_employees.contains(E1) || !_employees.contains(E2)) {
+
+    public void addIncompatibility(Employee E1, Employee E2) {
+        if (!_employees.contains(E1) || !_employees.contains(E2)) {
             throw new IllegalArgumentException();
         }
-        
-    	Incompatibility incompatibles = new Incompatibility(E1,E2);
-    	List_incompatibility.add(incompatibles);
-    }   
-    
-    public void setRequirement(Role role, int count) {
-        if(count < 0) {
-            throw new IllegalArgumentException();
-        }
-        
-        _requirements.put(role, count);  
+
+        Incompatibility incompatibles = new Incompatibility(E1, E2);
+        List_incompatibility.add(incompatibles);
     }
-    
-    public int getRequiredCount(Role role) {
-        if(_requirements.containsKey(role)) {
-            return _requirements.get(role);
+
+    public void setRequirement(Role role, int count) {
+        if (count < 0) {
+            throw new IllegalArgumentException();
         }
-        else return 0; 
+
+        _requirements.put(role, count);
+    }
+
+    public int getRequiredCount(Role role) {
+        if (_requirements.containsKey(role)) {
+            return _requirements.get(role);
+        } else return 0;
     }
 
     private Role stringToRole(String role) {
@@ -71,15 +69,14 @@ public class DreamTeam implements Model {
 
         return r;
     }
-    
+
     public List<Employee> getEmployees() {
         return _employees;
     }
-    
-    public List<Incompatibility> getIncompatibilities(){
+
+    public List<Incompatibility> getIncompatibilities() {
         return List_incompatibility;
     }
-    
 
     @Override
     public void addObserver(Observer observer) {

@@ -16,8 +16,7 @@ class IncompatibilitiesDialogPane extends ToolbarDialogPane {
     }
 
     @Override
-    void initComponents()
-    {
+    void initComponents() {
         initFirstEmployee();
         initSecondEmployee();
     }

@@ -24,7 +24,7 @@ public class Employee {
     public int getCalification() {
         return _calification;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -32,9 +32,9 @@ public class Employee {
 
         Employee other = (Employee) obj;
 
-        return _calification == other._calification &&
-               Objects.equals(_name, other._name) &&
-               _role == other._role;
+        return _calification == other._calification
+                && Objects.equals(_name, other._name)
+                && _role == other._role;
     }
 
     @Override

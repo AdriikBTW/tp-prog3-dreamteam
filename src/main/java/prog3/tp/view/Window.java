@@ -77,7 +77,8 @@ public class Window implements View, ToolbarListener {
     }
 
     @Override
-    public void onRequirementsAdded(int arquitectAmount, int programmerAmount, int teamLeaderAmount, int testerAmount) {
+    public void onRequirementsAdded(
+            int arquitectAmount, int programmerAmount, int teamLeaderAmount, int testerAmount) {
         // TODO: implement logic
     }
 

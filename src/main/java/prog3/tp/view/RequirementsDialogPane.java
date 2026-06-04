@@ -19,8 +19,7 @@ class RequirementsDialogPane extends ToolbarDialogPane {
     }
 
     @Override
-    void initComponents()
-    {
+    void initComponents() {
         _arquitectAmount = createSpinner();
         _programmerAmount = createSpinner();
         _teamLeaderAmount = createSpinner();

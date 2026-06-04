@@ -78,8 +78,7 @@ class Toolbar extends JToolBar {
 
             if (firstEmployee.equals(secondEmployee))
                 showMessageError("Select different employees.");
-            else
-                _listener.onIncompatibilityAdded(firstEmployee, secondEmployee);
+            else _listener.onIncompatibilityAdded(firstEmployee, secondEmployee);
         }
     }
 
@@ -104,7 +103,8 @@ class Toolbar extends JToolBar {
             int teamLeaderAmount = dialog.getTeamLeaderAmount();
             int testerAmount = dialog.getTesterAmount();
 
-            _listener.onRequirementsAdded(arquitectAmount, programmerAmount, teamLeaderAmount, testerAmount);
+            _listener.onRequirementsAdded(
+                    arquitectAmount, programmerAmount, teamLeaderAmount, testerAmount);
         }
     }
 

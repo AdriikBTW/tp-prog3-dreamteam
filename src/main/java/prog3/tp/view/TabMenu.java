@@ -24,5 +24,4 @@ class TabMenu extends JTabbedPane {
         JTextField text = new JTextField("anashe");
         this.addTab("Teams", text);
     }
-
 }
