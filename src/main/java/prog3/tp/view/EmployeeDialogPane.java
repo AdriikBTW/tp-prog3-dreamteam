@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 class EmployeeDialogPane extends ToolbarDialogPane {
     private JTextField _name;
     private JComboBox<String> _role;
-    private JComboBox<Integer> _calification;
+    private JComboBox<String> _calification;
 
     EmployeeDialogPane(String title) {
         super(title);
@@ -34,7 +34,14 @@ class EmployeeDialogPane extends ToolbarDialogPane {
     }
 
     private void initCalificationField() {
-        Integer[] items = {1, 2, 3, 4, 5};
+
+        String[] items = {
+                "★",
+                "★★",
+                "★★★",
+                "★★★★",
+                "★★★★★",
+        };
         _calification = new JComboBox<>(items);
     }
 
@@ -59,6 +66,6 @@ class EmployeeDialogPane extends ToolbarDialogPane {
     }
 
     public int getCalification() {
-        return (int) _calification.getSelectedItem();
+        return ((String) _calification.getSelectedItem()).length();
     }
 }
