@@ -21,6 +21,6 @@ public class Presenter implements Observer {
 
     @Override
     public void update() {
-        // TODO: implement logic
+        _view.update();
     }
 }

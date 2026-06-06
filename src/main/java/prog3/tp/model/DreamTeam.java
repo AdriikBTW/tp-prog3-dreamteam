@@ -31,6 +31,8 @@ public class DreamTeam implements Model {
 
         Incompatibility incompatibles = new Incompatibility(E1, E2);
         List_incompatibility.add(incompatibles);
+
+        _observer.update();
     }
 
     public void setRequirement(Role role, int count) {
@@ -45,6 +47,17 @@ public class DreamTeam implements Model {
         if (_requirements.containsKey(role)) {
             return _requirements.get(role);
         } else return 0;
+    }
+
+    public Employee findEmployeeByName(String name) {
+
+        for (Employee e : _employees) {
+            if (e.getName().equals(name)) {
+                return e;
+            }
+        }
+
+        throw new IllegalArgumentException("Nombre de empleado no existe");
     }
 
     private Role stringToRole(String role) {
