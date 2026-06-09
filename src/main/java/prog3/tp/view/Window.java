@@ -1,9 +1,6 @@
 package prog3.tp.view;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.io.InputStream;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
@@ -14,7 +11,6 @@ public class Window implements View, ToolbarListener {
     private JFrame _frame;
     private Toolbar _toolbar;
     private TabMenu _tabs;
-    private Font _font;
 
     public Window() {
         try {
@@ -22,20 +18,7 @@ public class Window implements View, ToolbarListener {
         } catch (Exception e) {
             System.out.println("Error setting native look: " + e);
         }
-        loadFont();
         initialize();
-    }
-
-    private void loadFont() {
-        try {
-            InputStream is = getClass().getResourceAsStream("/fonts/jetbrains.ttf");
-            _font = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(20f);
-
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(_font);
-        } catch (Exception e) {
-            _font = new Font("SansSerif", Font.PLAIN, 14);
-        }
     }
 
     public void setVisible(boolean visibility) {
@@ -60,7 +43,6 @@ public class Window implements View, ToolbarListener {
 
     private void setUpToolbar() {
         _toolbar = new Toolbar(this);
-        _toolbar.setFontForButtons(_font);
     }
 
     private void setUpTabs() {

@@ -1,6 +1,5 @@
 package prog3.tp.view;
 
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -27,12 +26,6 @@ class Toolbar extends JToolBar {
         this.add(_employeeButton);
         this.add(_incompatibilityButton);
         this.add(_requirementsButton);
-    }
-
-    void setFontForButtons(Font font) {
-        // NOTE: check how to set the font in the button constructor, so we
-        // dont set it from here manually
-        _employeeButton.setFont(font);
     }
 
     private void initEmployeeButton() {
