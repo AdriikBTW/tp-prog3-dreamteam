@@ -5,6 +5,7 @@ import javax.swing.JTextField;
 
 class TabMenu extends JTabbedPane {
     private EmployeeTable _employeeTable;
+    private IncompatibilityTable _incompatibilityTable;
 
     TabMenu() {
         initEmployeesTab();
@@ -18,8 +19,8 @@ class TabMenu extends JTabbedPane {
     }
 
     private void initIncompatibilitiesTab() {
-        JTextField text = new JTextField("there!");
-        this.addTab("Incompatibilities", text);
+        _incompatibilityTable = new IncompatibilityTable();
+        this.addTab("Incompatibilities", _incompatibilityTable);
     }
 
     private void initTeamTab() {
@@ -29,5 +30,9 @@ class TabMenu extends JTabbedPane {
 
     void addNewEmployee(String name, String role, int calification) {
         _employeeTable.addNewEmployee(name, role, calification);
+    }
+
+    void addNewIncompatibility(String firstEmployee, String secondEmployee) {
+        _incompatibilityTable.addNewIncompatibility(firstEmployee, secondEmployee);
     }
 }

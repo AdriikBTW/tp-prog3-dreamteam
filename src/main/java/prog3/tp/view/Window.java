@@ -81,6 +81,7 @@ public class Window implements View, ToolbarListener {
     @Override
     public void onIncompatibilityAdded(String firstName, String secondName) {
         _presenter.onIncompatibilityAdded(firstName, secondName);
+        _tabs.addNewIncompatibility(firstName, secondName);
     }
 
     @Override
