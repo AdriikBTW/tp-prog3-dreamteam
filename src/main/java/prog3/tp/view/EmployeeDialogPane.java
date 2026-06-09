@@ -4,6 +4,7 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import prog3.tp.model.Role;
 
 class EmployeeDialogPane extends ToolbarDialogPane {
     private JTextField _name;
@@ -29,7 +30,11 @@ class EmployeeDialogPane extends ToolbarDialogPane {
     }
 
     private void initRoleField() {
-        String[] items = {"Arquitect", "Programmer", "Team Leader", "Tester"};
+        String[] items = new String[Role.values().length];
+
+        for (int i = 0; i < Role.values().length; i++)
+            items[i] = Role.values()[i].toString();
+
         _role = new JComboBox<>(items);
     }
 
