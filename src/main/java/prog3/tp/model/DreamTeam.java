@@ -18,7 +18,7 @@ public class DreamTeam implements Model {
     }
 
     public void addEmployee(String name, String role, int calification) {
-        Employee newEmployee = new Employee(name, stringToRole(role), calification);
+        Employee newEmployee = new Employee(name, Role.toRole(role), calification);
         _employees.add(newEmployee);
 
         _observer.update();
@@ -59,29 +59,6 @@ public class DreamTeam implements Model {
         }
 
         throw new IllegalArgumentException("Nombre de empleado no existe");
-    }
-
-    private Role stringToRole(String role) {
-        Role r;
-        switch (role) {
-            case "Team Leader":
-                r = Role.TEAM_LEADER;
-                break;
-            case "Arquitect":
-                r = Role.ARQUITECT;
-                break;
-            case "Programmer":
-                r = Role.PROGRAMMER;
-                break;
-            case "Tester":
-                r = Role.TESTER;
-                break;
-            default:
-                r = Role.UNKNOWN;
-                break;
-        }
-
-        return r;
     }
 
     public List<Employee> getEmployees() {
