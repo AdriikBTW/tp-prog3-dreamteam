@@ -73,7 +73,7 @@ class Toolbar extends JToolBar {
 
     private void addNewIncompatibility() {
         List<String> names = _listener.getEmployeeNames();
-        IncompatibilitiesDialogPane dialog = new IncompatibilitiesDialogPane("New incompatibility", names);
+        IncompatibilityDialogPane dialog = new IncompatibilityDialogPane("New incompatibility", names);
 
         if (dialog.showDialog() == JOptionPane.OK_OPTION) {
             String firstEmployee = dialog.getFirstEmployee();

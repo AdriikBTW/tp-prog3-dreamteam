@@ -5,12 +5,12 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 
-class IncompatibilitiesDialogPane extends ToolbarDialogPane {
+class IncompatibilityDialogPane extends ToolbarDialogPane {
     private JComboBox<String> _firstEmployeeField;
     private JComboBox<String> _secondEmployeeField;
     private List<String> _employeeNames;
 
-    IncompatibilitiesDialogPane(String title, List<String> employeeNames) {
+    IncompatibilityDialogPane(String title, List<String> employeeNames) {
         super(title);
         _employeeNames = employeeNames;
 
