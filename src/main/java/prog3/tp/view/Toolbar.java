@@ -3,6 +3,7 @@ package prog3.tp.view;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 
@@ -71,7 +72,25 @@ class Toolbar extends JToolBar {
     }
 
     private void addNewIncompatibility() {
-        _listener.onIncompatibilityAdded();
+        List<String> names = _listener.getEmployeeNames();
+        IncompatibilitiesDialogPane dialog = new IncompatibilitiesDialogPane("New incompatibility", names);
+
+        if (dialog.showDialog() == JOptionPane.OK_OPTION) {
+            String firstEmployee = dialog.getFirstEmployee();
+            String secondEmployee = dialog.getSecondEmployee();
+
+            if (firstEmployee == null || secondEmployee == null) {
+                showMessageError("Employees can't be empty.");
+                return;
+            }
+
+            if (firstEmployee.equals(secondEmployee)) {
+                showMessageError("Select different employees.");
+                return;
+            }
+
+            _listener.onIncompatibilityAdded(firstEmployee, secondEmployee);
+        }
     }
 
     private void initRequirementsButton() {

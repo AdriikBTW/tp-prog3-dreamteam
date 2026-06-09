@@ -14,6 +14,8 @@ public interface Model {
 
     public int getRequiredCount(Role r);
 
+    public Employee findEmployeeByName(String name);
+
     public List<Employee> getEmployees();
 
     public List<Incompatibility> getIncompatibilities();

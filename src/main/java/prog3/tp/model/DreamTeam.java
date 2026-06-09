@@ -49,6 +49,7 @@ public class DreamTeam implements Model {
         } else return 0;
     }
 
+    @Override
     public Employee findEmployeeByName(String name) {
 
         for (Employee e : _employees) {

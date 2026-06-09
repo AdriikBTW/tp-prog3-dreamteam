@@ -1,10 +1,8 @@
 package prog3.tp.presenter;
 
 import java.util.List;
-import javax.swing.JOptionPane;
 import prog3.tp.model.Employee;
 import prog3.tp.model.Model;
-import prog3.tp.view.IncompatibilitiesDialogPane;
 import prog3.tp.view.View;
 
 public class Presenter implements Observer {
@@ -23,27 +21,16 @@ public class Presenter implements Observer {
         _model.addEmployee(name, role, calification);
     }
 
-    public void onIncompatibilityAdded() {
-        List<Employee> employees = _model.getEmployees();
+    public void onIncompatibilityAdded(String name1, String name2) {
+        Employee e1 = _model.findEmployeeByName(name1);
+        Employee e2 = _model.findEmployeeByName(name2);
+        _model.addIncompatibility(e1, e2);
+    }
 
-        IncompatibilitiesDialogPane dialog = new IncompatibilitiesDialogPane("New incompatibility", employees);
-
-        if (dialog.showDialog() == JOptionPane.OK_OPTION) {
-            Employee first = dialog.getFirstEmployeeObject();
-            Employee second = dialog.getSecondEmployeeObject();
-
-            if (first == null || second == null) {
-                JOptionPane.showMessageDialog(null, "Select two employees.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (first.equals(second)) {
-                JOptionPane.showMessageDialog(null, "Select different employees.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            _model.addIncompatibility(first, second);
-        }
+    public List<String> getEmployeeNames() {
+        return _model.getEmployees().stream()
+                .map(Employee::getName)
+                .toList();
     }
 
     @Override

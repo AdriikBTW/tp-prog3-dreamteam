@@ -4,9 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.io.InputStream;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
-import prog3.tp.model.Employee;
 import prog3.tp.presenter.Presenter;
 
 public class Window implements View, ToolbarListener {
@@ -74,8 +74,13 @@ public class Window implements View, ToolbarListener {
     }
 
     @Override
-    public void onIncompatibilityAdded() {
-    	_presenter.onIncompatibilityAdded();
+    public List<String> getEmployeeNames() {
+        return _presenter.getEmployeeNames();
+    }
+
+    @Override
+    public void onIncompatibilityAdded(String firstName, String secondName) {
+        _presenter.onIncompatibilityAdded(firstName, secondName);
     }
 
     @Override
