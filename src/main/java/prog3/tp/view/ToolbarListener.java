@@ -3,7 +3,7 @@ package prog3.tp.view;
 interface ToolbarListener {
     void onEmployeeAdded(String name, String role, int calification);
 
-    void onIncompatibilityAdded(String firstEmployee, String secondEmployee);
+    void onIncompatibilityAdded();
 
     void onRequirementsAdded(
             int arquitectAmount, int programmerAmount, int teamLeaderAmount, int testerAmount);

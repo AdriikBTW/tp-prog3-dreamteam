@@ -1,15 +1,22 @@
 package prog3.tp.view;
 
+import java.awt.Component;
+import java.util.List;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import prog3.tp.model.Employee;
 
-class IncompatibilitiesDialogPane extends ToolbarDialogPane {
-    private JComboBox<String> _firstEmployee;
-    private JComboBox<String> _secondEmployee;
+public class IncompatibilitiesDialogPane extends ToolbarDialogPane {
+    private JComboBox<Employee> _firstEmployee;
+    private JComboBox<Employee> _secondEmployee;
+    private List<Employee> _employees;
 
-    IncompatibilitiesDialogPane(String title) {
+    public IncompatibilitiesDialogPane(String title, List<Employee> employees) {
         super(title);
+        _employees = employees;
 
         initComponents();
         addComponents();
@@ -17,20 +24,30 @@ class IncompatibilitiesDialogPane extends ToolbarDialogPane {
 
     @Override
     void initComponents() {
-        initFirstEmployee();
-        initSecondEmployee();
+        initFirstEmployee(_employees);
+        initSecondEmployee(_employees);
     }
 
-    private void initFirstEmployee() {
-        // TODO: this should be a dynamic list, so it should receive this list
-        // by paramater
-        String[] items = {"Adrián", "Emiliano", "Lautaro", "Nahuel"};
+    private void initFirstEmployee(List<Employee> employees) {
+        Employee[] items = employees.toArray(new Employee[0]);
         _firstEmployee = new JComboBox<>(items);
+        _firstEmployee.setRenderer(new EmployeeRenderer());
     }
 
-    private void initSecondEmployee() {
-        String[] items = {"Adrián", "Emiliano", "Lautaro", "Nahuel"};
+    private void initSecondEmployee(List<Employee> employees) {
+        Employee[] items = employees.toArray(new Employee[0]);
         _secondEmployee = new JComboBox<>(items);
+        _secondEmployee.setRenderer(new EmployeeRenderer());
+    }
+
+    private static class EmployeeRenderer extends DefaultListCellRenderer {
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+            if (value instanceof Employee) setText(((Employee) value).getName());
+            else setText("");
+            return this;
+        }
     }
 
     @Override
@@ -45,10 +62,20 @@ class IncompatibilitiesDialogPane extends ToolbarDialogPane {
     }
 
     public String getFirstEmployee() {
-        return (String) _firstEmployee.getSelectedItem();
+        Employee e = (Employee) _firstEmployee.getSelectedItem();
+        return e == null ? null : e.getName();
     }
 
     public String getSecondEmployee() {
-        return (String) _secondEmployee.getSelectedItem();
+        Employee e = (Employee) _secondEmployee.getSelectedItem();
+        return e == null ? null : e.getName();
+    }
+
+    public Employee getFirstEmployeeObject() {
+        return (Employee) _firstEmployee.getSelectedItem();
+    }
+
+    public Employee getSecondEmployeeObject() {
+        return (Employee) _secondEmployee.getSelectedItem();
     }
 }

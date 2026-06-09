@@ -6,6 +6,7 @@ import java.awt.GraphicsEnvironment;
 import java.io.InputStream;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+import prog3.tp.model.Employee;
 import prog3.tp.presenter.Presenter;
 
 public class Window implements View, ToolbarListener {
@@ -72,8 +73,8 @@ public class Window implements View, ToolbarListener {
     }
 
     @Override
-    public void onIncompatibilityAdded(String firstEmployee, String secondEmployee) {
-        // TODO: implement logic
+    public void onIncompatibilityAdded() {
+    	_presenter.onIncompatibilityAdded();
     }
 
     @Override
