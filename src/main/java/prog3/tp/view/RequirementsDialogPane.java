@@ -1,15 +1,15 @@
 package prog3.tp.view;
 
+import java.util.EnumMap;
+import java.util.Map;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import prog3.tp.model.Role;
 
 class RequirementsDialogPane extends ToolbarDialogPane {
-    private JSpinner _arquitectAmount;
-    private JSpinner _programmerAmount;
-    private JSpinner _teamLeaderAmount;
-    private JSpinner _testerAmount;
+    private Map<Role, JSpinner> _spinners;
 
     RequirementsDialogPane(String title) {
         super(title);
@@ -20,10 +20,10 @@ class RequirementsDialogPane extends ToolbarDialogPane {
 
     @Override
     void initComponents() {
-        _arquitectAmount = createSpinner();
-        _programmerAmount = createSpinner();
-        _teamLeaderAmount = createSpinner();
-        _testerAmount = createSpinner();
+        _spinners = new EnumMap<>(Role.class);
+
+        for (Role role : Role.values())
+            _spinners.put(role, createSpinner());
     }
 
     private JSpinner createSpinner() {
@@ -36,10 +36,11 @@ class RequirementsDialogPane extends ToolbarDialogPane {
 
     @Override
     void addComponents() {
-        this.addComponent("Amount of Arquitects: ", _arquitectAmount);
-        this.addComponent("Amount of Programmers: ", _programmerAmount);
-        this.addComponent("Amount of Team Leaders: ", _teamLeaderAmount);
-        this.addComponent("Amount of Testers: ", _testerAmount);
+        for (Map.Entry<Role, JSpinner> entry: _spinners.entrySet()) {
+            Role role = entry.getKey();
+            JSpinner spinner = entry.getValue();
+            this.addComponent("Amount of " + role + ": ", spinner);
+        }
     }
 
     private void addComponent(String labelText, JComponent component) {
@@ -47,23 +48,15 @@ class RequirementsDialogPane extends ToolbarDialogPane {
         this.add(component);
     }
 
-    int getArquitectAmount() {
-        return getSpinnerValue(_arquitectAmount);
-    }
+    Map<Role, Integer> getRequirements() {
+        Map<Role, Integer> requirements = new EnumMap<>(Role.class);
 
-    int getProgrammerAmount() {
-        return getSpinnerValue(_programmerAmount);
-    }
+        for (Map.Entry<Role, JSpinner> entry: _spinners.entrySet()) {
+            Role role = entry.getKey();
+            int amount = (int) entry.getValue().getValue();
+            requirements.put(role, amount);
+        }
 
-    int getTeamLeaderAmount() {
-        return getSpinnerValue(_teamLeaderAmount);
-    }
-
-    int getTesterAmount() {
-        return getSpinnerValue(_testerAmount);
-    }
-
-    private int getSpinnerValue(JSpinner spinner) {
-        return (int) spinner.getValue();
+        return requirements;
     }
 }

@@ -101,15 +101,8 @@ class Toolbar extends JToolBar {
     private void addRequirements() {
         RequirementsDialogPane dialog = new RequirementsDialogPane("Requirements");
 
-        if (dialog.showDialog() == JOptionPane.OK_OPTION) {
-            int arquitectAmount = dialog.getArquitectAmount();
-            int programmerAmount = dialog.getProgrammerAmount();
-            int teamLeaderAmount = dialog.getTeamLeaderAmount();
-            int testerAmount = dialog.getTesterAmount();
-
-            _listener.onRequirementsAdded(
-                    arquitectAmount, programmerAmount, teamLeaderAmount, testerAmount);
-        }
+        if (dialog.showDialog() == JOptionPane.OK_OPTION)
+            _listener.onRequirementsAdded(dialog.getRequirements());
     }
 
     private void showMessageError(String text) {

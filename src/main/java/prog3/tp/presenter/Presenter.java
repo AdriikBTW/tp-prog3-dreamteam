@@ -1,8 +1,10 @@
 package prog3.tp.presenter;
 
 import java.util.List;
+import java.util.Map;
 import prog3.tp.model.Employee;
 import prog3.tp.model.Model;
+import prog3.tp.model.Role;
 import prog3.tp.view.View;
 
 public class Presenter implements Observer {
@@ -31,6 +33,14 @@ public class Presenter implements Observer {
         return _model.getEmployees().stream()
                 .map(Employee::getName)
                 .toList();
+    }
+
+    public void addRequirements(Map<Role, Integer> requirements) {
+        for (Map.Entry<Role, Integer> entry : requirements.entrySet()) {
+            Role role = entry.getKey();
+            int amount = entry.getValue();
+            _model.setRequirement(role, amount);
+        }
     }
 
     @Override

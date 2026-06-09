@@ -2,8 +2,10 @@ package prog3.tp.view;
 
 import java.awt.BorderLayout;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+import prog3.tp.model.Role;
 import prog3.tp.presenter.Presenter;
 
 public class Window implements View, ToolbarListener {
@@ -67,9 +69,8 @@ public class Window implements View, ToolbarListener {
     }
 
     @Override
-    public void onRequirementsAdded(
-            int arquitectAmount, int programmerAmount, int teamLeaderAmount, int testerAmount) {
-        // TODO: implement logic
+    public void onRequirementsAdded(Map<Role, Integer> requirements) {
+        _presenter.addRequirements(requirements);
     }
 
     @Override
