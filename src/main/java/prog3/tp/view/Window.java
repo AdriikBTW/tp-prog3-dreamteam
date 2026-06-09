@@ -70,6 +70,7 @@ public class Window implements View, ToolbarListener {
     @Override
     public void onEmployeeAdded(String name, String role, int calification) {
         _presenter.addEmployee(name, role, calification);
+        _tabs.addNewEmployee(name, role, calification);
     }
 
     @Override
