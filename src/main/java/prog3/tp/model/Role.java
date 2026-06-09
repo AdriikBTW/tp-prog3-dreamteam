@@ -1,6 +1,6 @@
 package prog3.tp.model;
 
-enum Role {
+public enum Role {
     TEAM_LEADER,
     ARQUITECT,
     PROGRAMMER,
