@@ -5,7 +5,7 @@ import java.util.Map;
 import prog3.tp.model.Role;
 
 interface ToolbarListener {
-    void onEmployeeAdded(String name, String role, int calification);
+    void onEmployeeAdded(String name, String role, int calification, String filePath);
 
     void onIncompatibilityAdded(String firstEmployee, String secondEmployee);
 

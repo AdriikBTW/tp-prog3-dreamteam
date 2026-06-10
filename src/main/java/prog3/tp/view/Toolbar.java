@@ -41,7 +41,7 @@ class Toolbar extends JToolBar {
         	//if (dialog.getName().trim().isEmpty()) showMessageError("Name field can't be empty.");
             else
                 _listener.onEmployeeAdded(
-                        dialog.getName(), dialog.getRole(), dialog.getCalification());
+                        dialog.getName(), dialog.getRole(), dialog.getCalification(), dialog.getImagePath());
         }
     }
 

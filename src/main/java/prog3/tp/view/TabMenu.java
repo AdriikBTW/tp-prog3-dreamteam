@@ -42,8 +42,8 @@ class TabMenu extends JTabbedPane {
         this.addTab("Teams", _teamPanel);
     }
 
-    void addNewEmployee(String name, String role, int calification) {
-        _employeeTable.addNewEmployee(name, role, calification);
+    void addNewEmployee(String name, String role, int calification, String imagePath) {
+        _employeeTable.addNewEmployee(name, role, calification, imagePath);
     }
 
     void addNewIncompatibility(String firstEmployee, String secondEmployee) {

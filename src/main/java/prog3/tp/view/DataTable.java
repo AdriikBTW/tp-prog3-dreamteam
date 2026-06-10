@@ -12,10 +12,15 @@ class DataTable extends JScrollPane {
         _tableModel = new ReadOnlyTable(columnNames, 0);
         _table = new JTable(_tableModel);
         this.setViewportView(_table);
+        this.setRowHeight(ImageRegistry.getScaledImageSize() + 10);
     }
 
     void addNewRow(Object[] rowData) {
         _tableModel.addRow(rowData);
+    }
+
+    void setRowHeight(int height) {
+        _table.setRowHeight(height);
     }
 
     void clear() {
@@ -30,6 +35,16 @@ class DataTable extends JScrollPane {
         @Override
         public boolean isCellEditable(int row, int col) {
             return false;
+        }
+
+        @Override
+        public Class<?> getColumnClass(int columnIndex) {
+            if (getRowCount() > 0) {
+                Object value = getValueAt(0, columnIndex);
+                if (value != null) return value.getClass();
+            }
+
+            return super.getColumnClass(columnIndex);
         }
     }
 }

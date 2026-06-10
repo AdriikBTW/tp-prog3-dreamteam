@@ -4,7 +4,7 @@ import java.util.List;
 import prog3.tp.model.Employee;
 
 class TeamTable extends DataTable {
-    private static String[] COLUMN_NAMES = {"Name", "Role", "Calification"};
+    private static String[] COLUMN_NAMES = {"Photo", "Name", "Role", "Calification"};
 
     TeamTable() {
         super(COLUMN_NAMES);
@@ -16,7 +16,8 @@ class TeamTable extends DataTable {
         // TODO: refactor this so it not depends so much of the model the view.
         // we have coupling with Role, better not to add more
         for (Employee e : team) {
-            Object[] row = {e.getName(), e.getRole().toString(), e.getCalification()};
+            Object photo = ImageRegistry.getIcon(e.getName());
+            Object[] row = {photo, e.getName(), e.getRole().toString(), e.getCalification()};
             this.addNewRow(row);
         }
     }
