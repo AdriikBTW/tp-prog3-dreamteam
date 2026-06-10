@@ -1,5 +1,6 @@
 package prog3.tp.model;
 
+import java.util.EnumMap;
 import java.util.List;
 import prog3.tp.presenter.Observer;
 
@@ -13,6 +14,8 @@ public interface Model {
     public void setRequirement(Role r, int count);
 
     public int getRequiredCount(Role r);
+
+    public EnumMap<Role, Integer> getRequirements();
 
     public Employee findEmployeeByName(String name);
 

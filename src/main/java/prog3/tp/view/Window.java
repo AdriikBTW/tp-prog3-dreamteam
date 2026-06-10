@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import prog3.tp.model.Role;
+import prog3.tp.model.SolverResult;
 import prog3.tp.presenter.Presenter;
 
 public class Window implements View, ToolbarListener {
@@ -74,6 +75,11 @@ public class Window implements View, ToolbarListener {
     }
 
     @Override
+    public void onSolve() {
+        _presenter.solve();
+    }
+
+    @Override
     public void setPresenter(Presenter presenter) {
         _presenter = presenter;
     }
@@ -81,5 +87,15 @@ public class Window implements View, ToolbarListener {
     @Override
     public void update() {
         // TODO: implement logic
+    }
+
+    @Override
+    public void showSolving() {
+        _tabs.showSolving();
+    }
+
+    @Override
+    public void showResult(SolverResult result) {
+        _tabs.showTeamResult(result);
     }
 }

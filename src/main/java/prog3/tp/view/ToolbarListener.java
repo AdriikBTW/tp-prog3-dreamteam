@@ -12,4 +12,6 @@ interface ToolbarListener {
     List<String> getEmployeeNames();
 
     void onRequirementsAdded(Map<Role, Integer> requirements);
+
+    void onSolve();
 }

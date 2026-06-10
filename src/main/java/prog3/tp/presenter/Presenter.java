@@ -5,6 +5,8 @@ import java.util.Map;
 import prog3.tp.model.Employee;
 import prog3.tp.model.Model;
 import prog3.tp.model.Role;
+import prog3.tp.model.SolveWorker;
+import prog3.tp.model.SolverResult;
 import prog3.tp.view.View;
 
 public class Presenter implements Observer {
@@ -41,6 +43,21 @@ public class Presenter implements Observer {
             int amount = entry.getValue();
             _model.setRequirement(role, amount);
         }
+    }
+
+    public void solve() {
+        _view.showSolving();
+
+        SolveWorker worker = new SolveWorker(
+                _model.getEmployees(),
+                _model.getRequirements(),
+                _model.getIncompatibilities(),
+                this::onSolverResult);
+        worker.execute();
+    }
+
+    private void onSolverResult(SolverResult result) {
+        _view.showResult(result);
     }
 
     @Override

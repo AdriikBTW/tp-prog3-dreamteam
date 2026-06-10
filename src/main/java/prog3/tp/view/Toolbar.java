@@ -10,6 +10,7 @@ class Toolbar extends JToolBar {
     private ToolbarButton _employeeButton;
     private ToolbarButton _incompatibilityButton;
     private ToolbarButton _requirementsButton;
+    private ToolbarButton _solveButton;
     private ToolbarListener _listener;
 
     public Toolbar(ToolbarListener listener) {
@@ -22,10 +23,13 @@ class Toolbar extends JToolBar {
         initEmployeeButton();
         initIncompatibilitiesButton();
         initRequirementsButton();
+        initSolveButton();
 
         this.add(_employeeButton);
         this.add(_incompatibilityButton);
         this.add(_requirementsButton);
+        this.addSeparator();
+        this.add(_solveButton);
     }
 
     private void initEmployeeButton() {
@@ -103,6 +107,18 @@ class Toolbar extends JToolBar {
 
         if (dialog.showDialog() == JOptionPane.OK_OPTION)
             _listener.onRequirementsAdded(dialog.getRequirements());
+    }
+
+    private void initSolveButton() {
+        _solveButton = new ToolbarButton("\u25B6");
+        _solveButton.setToolTipText("Find optimal team.");
+        _solveButton.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        _listener.onSolve();
+                    }
+                });
     }
 
     private void showMessageError(String text) {

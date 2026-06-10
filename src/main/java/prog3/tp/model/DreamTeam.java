@@ -3,6 +3,7 @@ package prog3.tp.model;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
+import prog3.tp.model.Role;
 import prog3.tp.presenter.Observer;
 
 public class DreamTeam implements Model {
@@ -15,6 +16,9 @@ public class DreamTeam implements Model {
         _employees = new ArrayList<>();
         List_incompatibility = new ArrayList<>();
         _requirements = new EnumMap<>(Role.class);
+        for (Role r : Role.values()) {
+            _requirements.put(r, 1);
+        }
     }
 
     public void addEmployee(String name, String role, int calification) {
@@ -47,6 +51,10 @@ public class DreamTeam implements Model {
         if (_requirements.containsKey(role)) {
             return _requirements.get(role);
         } else return 0;
+    }
+
+    public EnumMap<Role, Integer> getRequirements() {
+        return _requirements.clone();
     }
 
     @Override
