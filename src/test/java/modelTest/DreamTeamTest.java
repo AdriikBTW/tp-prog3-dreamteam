@@ -169,4 +169,17 @@ public class DreamTeamTest {
         assertEquals(roles, returnRoles);
     }
 
+    @Test
+    public void findEmployeeByNameTest() {
+        Employee employee = new Employee("Linus", Role.PROGRAMMER, 5);
+        _dreamTeam.addEmployee("Linus", Role.PROGRAMMER.toString(), 5);
+        assertEquals(employee, _dreamTeam.findEmployeeByName("Linus"));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void findNonExistingEmployeeByNameTest() {
+        _dreamTeam.addEmployee("Linus", Role.PROGRAMMER.toString(), 5);
+        _dreamTeam.findEmployeeByName("Adrián");
+    }
+
 }
