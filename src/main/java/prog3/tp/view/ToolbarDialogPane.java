@@ -1,6 +1,8 @@
 package prog3.tp.view;
 
 import java.awt.GridLayout;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -20,8 +22,13 @@ abstract class ToolbarDialogPane extends JPanel {
 
     abstract void addComponents();
 
-    public int showDialog() {
+    int showDialog() {
         return JOptionPane.showConfirmDialog(
                 null, this, _title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+    }
+
+    void addComponent(String labelText, JComponent component) {
+        this.add(new JLabel(labelText));
+        this.add(component);
     }
 }

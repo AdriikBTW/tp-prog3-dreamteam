@@ -1,8 +1,6 @@
 package prog3.tp.view;
 
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 import prog3.tp.model.Role;
 
@@ -48,14 +46,9 @@ class EmployeeDialogPane extends ToolbarDialogPane {
 
     @Override
     void addComponents() {
-        addComponent("Name: ", _name);
-        addComponent("Role: ", _role);
-        addComponent("Calification: ", _calification);
-    }
-
-    private void addComponent(String labelText, JComponent component) {
-        this.add(new JLabel(labelText));
-        this.add(component);
+        this.addComponent("Name: ", _name);
+        this.addComponent("Role: ", _role);
+        this.addComponent("Calification: ", _calification);
     }
 
     public String getName() {

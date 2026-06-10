@@ -2,8 +2,6 @@ package prog3.tp.view;
 
 import java.util.List;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 
 class IncompatibilityDialogPane extends ToolbarDialogPane {
     private JComboBox<String> _firstEmployeeField;
@@ -33,11 +31,6 @@ class IncompatibilityDialogPane extends ToolbarDialogPane {
     void addComponents() {
         this.addComponent("First employee: ", _firstEmployeeField);
         this.addComponent("Second employee: ", _secondEmployeeField);
-    }
-
-    private void addComponent(String labelText, JComponent component) {
-        this.add(new JLabel(labelText));
-        this.add(component);
     }
 
     String getFirstEmployee() {

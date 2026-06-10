@@ -2,8 +2,6 @@ package prog3.tp.view;
 
 import java.util.EnumMap;
 import java.util.Map;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import prog3.tp.model.Role;
@@ -41,11 +39,6 @@ class RequirementsDialogPane extends ToolbarDialogPane {
             JSpinner spinner = entry.getValue();
             this.addComponent("Amount of " + role + ": ", spinner);
         }
-    }
-
-    private void addComponent(String labelText, JComponent component) {
-        this.add(new JLabel(labelText));
-        this.add(component);
     }
 
     Map<Role, Integer> getRequirements() {
