@@ -3,7 +3,6 @@ package prog3.tp.model;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
-import prog3.tp.model.Role;
 import prog3.tp.presenter.Observer;
 
 public class DreamTeam implements Model {
@@ -16,6 +15,9 @@ public class DreamTeam implements Model {
         _employees = new ArrayList<>();
         List_incompatibility = new ArrayList<>();
         _requirements = new EnumMap<>(Role.class);
+        // NOTE: we need to think about the design of this. by design we should
+        // force that must be at least one of each role, or we can create teams
+        // with no specific roles, for example with no testers?
         for (Role r : Role.values()) {
             _requirements.put(r, 1);
         }
@@ -40,7 +42,7 @@ public class DreamTeam implements Model {
     }
 
     public void setRequirement(Role role, int count) {
-        if (count < 0) {
+        if (count <= 0 || role == null) {
             throw new IllegalArgumentException();
         }
 
@@ -48,9 +50,12 @@ public class DreamTeam implements Model {
     }
 
     public int getRequiredCount(Role role) {
-        if (_requirements.containsKey(role)) {
-            return _requirements.get(role);
-        } else return 0;
+        // NOTE: the constructor creates a requirement with each role having an
+        // amount of one, so it is impossible to return 0.
+        // if (_requirements.containsKey(role)) {
+        //      return _requirements.get(role);
+        // } else return 0;
+        return _requirements.get(role);
     }
 
     public EnumMap<Role, Integer> getRequirements() {
