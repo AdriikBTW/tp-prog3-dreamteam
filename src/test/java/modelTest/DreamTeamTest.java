@@ -3,12 +3,13 @@ package modelTest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
-
+import java.util.EnumMap;
 import org.junit.Before;
 import org.junit.Test;
 import prog3.tp.model.DreamTeam;
 import prog3.tp.model.Employee;
 import prog3.tp.model.Incompatibility;
+import prog3.tp.model.Role;
 import prog3.tp.presenter.Observer;
 
 public class DreamTeamTest {
@@ -120,4 +121,52 @@ public class DreamTeamTest {
         _dreamTeam.addEmployee(name, role, calification);
         return _dreamTeam.getEmployees().get(_dreamTeam.getEmployees().size() - 1);
     }
+
+    @Test
+    public void setRequirementsTest() {
+        Role[] roles = Role.values();
+
+        for (Role role : roles)
+            _dreamTeam.setRequirement(role, 1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void setZeroAmountInRequirementsTest() {
+        _dreamTeam.setRequirement(Role.TEAM_LEADER, 0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void setNegativeAmountInRequirementsTest() {
+        _dreamTeam.setRequirement(Role.TEAM_LEADER, -1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void setNullRoleInRequirementsTest() {
+        _dreamTeam.setRequirement(null, 10);
+    }
+
+    @Test
+    public void getRequirementsTest() {
+        _dreamTeam.setRequirement(Role.PROGRAMMER, 10);
+        assertEquals(10, _dreamTeam.getRequiredCount(Role.PROGRAMMER));
+    }
+
+    @Test
+    public void getRolesInRequirementsTest() {
+        EnumMap<Role, Integer> roles = new EnumMap<>(Role.class);
+        EnumMap<Role, Integer> returnRoles = new EnumMap<>(Role.class);
+        Role[] roleValues = Role.values();
+
+        for (int i = 0; i < roleValues.length; i++) {
+            Role role = roleValues[i];
+            int amount = (i + 1) * 2;
+
+            roles.put(role, amount);
+            _dreamTeam.setRequirement(role, amount);
+        }
+
+        returnRoles = _dreamTeam.getRequirements();
+        assertEquals(roles, returnRoles);
+    }
+
 }
