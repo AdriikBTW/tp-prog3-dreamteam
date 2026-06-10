@@ -1,7 +1,5 @@
 package prog3.tp.view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
@@ -32,13 +30,7 @@ class Toolbar extends JToolBar {
     private void initEmployeeButton() {
         _employeeButton = new ToolbarButton("");
         _employeeButton.setToolTipText("Add new employee.");
-        _employeeButton.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        addNewEmployee();
-                    }
-                });
+        _employeeButton.addActionListener(e -> addNewEmployee());
     }
 
     private void addNewEmployee() {
@@ -56,13 +48,7 @@ class Toolbar extends JToolBar {
     private void initIncompatibilitiesButton() {
         _incompatibilityButton = new ToolbarButton("󰌺");
         _incompatibilityButton.setToolTipText("Add new incompatibility.");
-        _incompatibilityButton.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        addNewIncompatibility();
-                    }
-                });
+        _incompatibilityButton.addActionListener(e -> addNewIncompatibility());
     }
 
     private void addNewIncompatibility() {
@@ -90,13 +76,7 @@ class Toolbar extends JToolBar {
     private void initSolveButton() {
         _solveButton = new ToolbarButton("\u25B6");
         _solveButton.setToolTipText("Find optimal team.");
-        _solveButton.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        addRequirements();
-                    }
-                });
+        _solveButton.addActionListener(e -> addRequirements());
     }
 
     private void addRequirements() {
