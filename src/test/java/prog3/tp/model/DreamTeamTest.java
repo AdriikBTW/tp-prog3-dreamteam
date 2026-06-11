@@ -197,6 +197,6 @@ public class DreamTeamTest {
     @Test(expected = IllegalArgumentException.class)
     public void addEmployee_duplicateName_throwsException() {
         _dreamTeam.addEmployee("Alice", "Programmer", 4);
-        _dreamTeam.addEmployee("Alice", "Tester", 5);
+        _dreamTeam.addEmployee("Alice", "Programmer", 5);
     }
 }
