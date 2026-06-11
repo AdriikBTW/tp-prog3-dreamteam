@@ -5,10 +5,88 @@ Adrián Romero; Emiliano Carrasco; Lautaro Romero; Nahuel Lopez
 :title-page:
 :title-logo-image: image::ungs.jpg[]
 
-== Lorem Ipsum
+== Uso de Maven
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse finibus convallis velit, efficitur mattis massa dictum nec. Nulla sollicitudin nec eros ac pellentesque. Nulla dictum elit sit amet aliquam sagittis. Fusce metus nunc, rhoncus non neque id, eleifend elementum urna. Vestibulum ut neque sit amet sem laoreet efficitur. Mauris arcu orci, sollicitudin sed venenatis elementum, fermentum at felis. Maecenas quis augue posuere nibh congue tempor ut in odio. Duis ut quam rutrum, pharetra ex non, sollicitudin sapien. Maecenas eget nisi in tortor tempus aliquet.
+El plugin https://eclipse.dev/m2e/ permite el uso de Maven dentro de Eclipse.
 
-Maecenas euismod enim eu fermentum porta. Proin ultrices mauris nibh, et tristique est rhoncus et. Mauris vulputate, quam ac iaculis rutrum, augue quam rutrum ligula, non tincidunt est mauris vel turpis. In quam sem, commodo nec feugiat ac, consectetur id eros. Nunc a odio lectus. Donec tempor tellus ut tellus dapibus pharetra. Vestibulum vel risus dolor. Ut pharetra viverra lectus, ornare convallis velit lacinia vitae.
+Para importar el proyecto en Eclipse, debe seguir la siguiente ruta:
+menu:file[Import > Maven > Existing Maven Project]
 
-Cras eleifend ex orci, eget sollicitudin arcu egestas at. Suspendisse nec tristique ante. Maecenas mollis nisi a ante pretium vestibulum. Maecenas eu est mi. Duis non tellus quis lorem finibus porttitor vel a nisl. Donec efficitur luctus justo. Vivamus laoreet sit amet nulla non tristique. Mauris blandit non mauris condimentum venenatis. Nunc placerat varius turpis, ac commodo nisi fringilla et. Duis elementum nec mauris vitae consequat. 
+Luego de seleccionar el proyecto e importarlo, dentro de `Projects` el
+`pom.xml`. Seleccione este archivo y haga click en `Finish`.
+
+Para ejecutar los tests, los pasos son los mismos que con Junit 4, pero
+selecciona menu:RunAs[maven test].
+
+Para compilar, menu:RunAs[maven compile] o menu:RunAs[maven build].
+
+Para ejecutar el programa, ejecute el `Main`.
+
+== Diseño
+
+En este TP usamos nuevamente MVP (Model-View-Presenter) para separar la
+interfaz gráfica de usuario (GUI) del código de negocio (Modelo).
+
+El proyecto está separado en módulos, cada uno representando cada parte del
+diseño de MVP. A su vez, cada módulo está separado en clases, cada una con su
+responsabilidad. Además, esta separación permite la reducción de código
+duplicado y extensión del proyecto.
+
+Para la GUI utilizamos `JTable` para mostrar los diferentes empleados
+ingresados. Estas tablas están ubicadas en diferentes pestañas, cada una
+mostrando una información específica:
+
+* *Employees*: muestra los empleados ingresados con su foto de perfil, nombre,
+  rol y calificación.
+* *Incompatibilities*: muestra los empleados con incompatibilidad.
+* *Teams*: muestra el equipo óptimo posible con los empleados ingresados y las
+  incompatibilidades existentes.
+
+Para poder ingresar empleados, incompatibilidades y generar el equipo, se
+añadió un toolbar con las acciones disponibles.
+
+* *Añadir empleado*: permite añadir nuevos empleados con los datos
+  correspondientes, además de una foto de perfil.
+* *Añadir incompatibilidad*: permite añadir una incompatibilidad entre dos
+  empleados existentes.
+* *Generar equipo*: permite generar un equipo dado los requirimientos ingresados
+  por el usuario.
+
+Luego de presionar el botón para generar un equipo, se inicia un thread separado
+que se llama `SolveWorker` que busca el equipo óptimo utilizando backtracking
+gracias a los métodos utilizados en el `TeamSolver`.
+
+Para poder encontrar la solución más óptima, al llegar a una solución en el
+cuál dos empleados eran incompatibles, esa solución se "podaba", es decir, se
+retornaba para buscar otro empleado.
+
+Luego de que se encuentre un equipo válido, el método busca otro camino que
+tenga más calificación. Si no encuentra otro camino, devuelve el equipo válido.
+
+== Dificultades
+
+En general no hubo mayores complicaciones. Particularmente la mayor dificultad
+fue en poder mostrar imágenes en las tablas, y cómo reusar estas imágenes en
+diferentes tablas para evitar cargar en memoria la misma imagen múltiple veces.
+Para eso se utiliza la clase `ImageRegistry`, que permite asociar un empleado
+con una imagen, y así poder reusarla en diferentes partes de la interfaz,
+cacheando la imagen.
+
+== Cosas a mejorar
+
+Se cumplieron los objetivos principales del TP, pero aún quedaron detalles y
+funcionalidades a mejorar y añadir.
+
+Una de ellas es la opción de borrar un empleado específico, o borrar una
+incompatibilidad añadida.
+
+Otra funcionalidad deseada es mostrar en pantalla múltiples equipos generados,
+en vez de solo un equipo.
+
+La opción de heurística quedó pendiente de implementar, para poder comparar la
+solución hecha por el backtracking y la solución hecha por la heurística.
+
+Otra cosa a mejorar la identificación de empleados, ya que actualmente utiliza
+el nombre y rol para identificarlos. Hubiese sido ideal poder haber añadido
+algún dato único para identificarlos, como un mail o un DNI.
+
