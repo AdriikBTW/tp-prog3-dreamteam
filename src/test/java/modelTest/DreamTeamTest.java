@@ -197,4 +197,10 @@ public class DreamTeamTest {
         _dreamTeam.addEmployee("Linus", Role.PROGRAMMER.toString(), 5);
         _dreamTeam.findEmployeeByName("Adrián");
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void addEmployee_duplicateName_throwsException() {
+        _dreamTeam.addEmployee("Alice", "Programmer", 4);
+        _dreamTeam.addEmployee("Alice", "Tester", 5);
+    }
 }

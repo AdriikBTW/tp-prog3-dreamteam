@@ -23,6 +23,12 @@ public class DreamTeam implements Model {
     }
 
     public void addEmployee(String name, String role, int calification) {
+        boolean exists =
+                _employees.stream()
+                        .anyMatch(
+                                e -> e.getName().equals(name) && e.getRole() == Role.toRole(role));
+        if (exists) throw new IllegalArgumentException("Employee '" + name + "' already exists.");
+
         Employee newEmployee = new Employee(name, Role.toRole(role), calification);
         _employees.add(newEmployee);
 

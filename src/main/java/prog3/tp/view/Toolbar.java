@@ -37,13 +37,17 @@ class Toolbar extends JToolBar {
         EmployeeDialogPane dialog = new EmployeeDialogPane("New Employee");
 
         if (dialog.showDialog() == JOptionPane.OK_OPTION) {
-            if (dialog.getName().isBlank()) showMessageError("Name field can't be empty.");
-            else
+            if (dialog.getName().isBlank()) {
+                showMessageError("Name field can't be empty.");
+                return;
+            }
+            try {
                 _listener.onEmployeeAdded(
-                        dialog.getName(),
-                        dialog.getRole(),
-                        dialog.getCalification(),
-                        dialog.getImagePath());
+                        dialog.getName(), dialog.getRole(),
+                        dialog.getCalification(), dialog.getImagePath());
+            } catch (IllegalArgumentException e) {
+                showMessageError("Empleado ya se encuentra añadido");
+            }
         }
     }
 
