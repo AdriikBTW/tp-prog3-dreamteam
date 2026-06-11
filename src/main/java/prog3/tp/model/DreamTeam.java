@@ -2,16 +2,18 @@ package prog3.tp.model;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.LinkedList;
 import java.util.List;
 import prog3.tp.presenter.Observer;
 
 public class DreamTeam implements Model {
-    private Observer _observer;
+    private List<Observer> _observers;
     private List<Employee> _employees;
     private List<Incompatibility> List_incompatibility;
     private EnumMap<Role, Integer> _requirements;
 
     public DreamTeam() {
+        _observers = new LinkedList<>();
         _employees = new ArrayList<>();
         List_incompatibility = new ArrayList<>();
         _requirements = new EnumMap<>(Role.class);
@@ -27,7 +29,7 @@ public class DreamTeam implements Model {
         Employee newEmployee = new Employee(name, Role.toRole(role), calification);
         _employees.add(newEmployee);
 
-        _observer.update();
+        notifyObservers();
     }
 
     public void addIncompatibility(Employee E1, Employee E2) {
@@ -38,7 +40,7 @@ public class DreamTeam implements Model {
         Incompatibility incompatibles = new Incompatibility(E1, E2);
         List_incompatibility.add(incompatibles);
 
-        _observer.update();
+        notifyObservers();
     }
 
     public void setRequirement(Role role, int count) {
@@ -84,6 +86,15 @@ public class DreamTeam implements Model {
 
     @Override
     public void addObserver(Observer observer) {
-        _observer = observer;
+        _observers.add(observer);
+    }
+
+    private void notifyObservers() {
+        for (Observer o : _observers)
+            o.update();
+    }
+
+    public void removeObserver(Observer observer) {
+        _observers.remove(observer);
     }
 }
