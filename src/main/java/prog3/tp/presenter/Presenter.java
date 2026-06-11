@@ -31,10 +31,22 @@ public class Presenter implements Observer {
         _model.addIncompatibility(e1, e2);
     }
 
-    public List<String> getEmployeeNames() {
+    public List<EmployeeViewData> getEmployees() {
         return _model.getEmployees().stream()
-                .map(Employee::getName)
-                .toList();
+            .map(employee -> new EmployeeViewData(
+                        employee.getName(),
+                        employee.getRole().toString(),
+                        employee.getCalification()))
+            .toList();
+    }
+
+    public List<IncompatibilityViewData> getIncompatibilities() {
+        return _model.getIncompatibilities().stream()
+            .map(i -> new IncompatibilityViewData(
+                        i.getIncompatibilityEmployee1().getName(),
+                        i.getIncompatibilityEmployee2().getName()))
+            .toList();
+
     }
 
     public void addRequirements(Map<Role, Integer> requirements) {

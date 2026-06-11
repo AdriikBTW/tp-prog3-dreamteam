@@ -9,7 +9,7 @@ class EmployeeTable extends DataTable {
         this.setRowHeight(IMAGE_SIZE + 10);
     }
 
-    void addNewEmployee(String name, String role, int calification, String imagePath) {
+    void addNewEmployee(String name, String role, int calification) {
         Object photo = ImageRegistry.getIcon(name);
 
         Object[] row = {photo, name, role, calification};

@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import prog3.tp.model.Role;
 import prog3.tp.model.SolverResult;
+import prog3.tp.presenter.EmployeeViewData;
+import prog3.tp.presenter.IncompatibilityViewData;
 import prog3.tp.presenter.Presenter;
 
 public class Window implements View, ToolbarListener {
@@ -56,18 +58,18 @@ public class Window implements View, ToolbarListener {
     public void onEmployeeAdded(String name, String role, int calification, String imagePath) {
         _presenter.addEmployee(name, role, calification);
         ImageRegistry.register(name, imagePath);
-        _tabs.addNewEmployee(name, role, calification, imagePath);
     }
 
     @Override
     public List<String> getEmployeeNames() {
-        return _presenter.getEmployeeNames();
+        return _presenter.getEmployees().stream()
+            .map(e -> e.getName())
+            .toList();
     }
 
     @Override
     public void onIncompatibilityAdded(String firstName, String secondName) {
         _presenter.onIncompatibilityAdded(firstName, secondName);
-        _tabs.addNewIncompatibility(firstName, secondName);
     }
 
     @Override
@@ -87,7 +89,20 @@ public class Window implements View, ToolbarListener {
 
     @Override
     public void update() {
-        // TODO: implement logic
+        _tabs.clearAll();
+
+        updateEmployee();
+        updateIncompatibilities();
+    }
+
+    private void updateEmployee() {
+        for (EmployeeViewData e : _presenter.getEmployees())
+            _tabs.addNewEmployee(e.getName(), e.getRole(), e.getCalification());
+    }
+
+    private void updateIncompatibilities() {
+        for (IncompatibilityViewData i : _presenter.getIncompatibilities())
+            _tabs.addNewIncompatibility(i.getFirstEmployee(), i.getSecondEmployee());
     }
 
     @Override

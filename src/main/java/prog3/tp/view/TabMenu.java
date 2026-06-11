@@ -42,8 +42,8 @@ class TabMenu extends JTabbedPane {
         this.addTab("Teams", _teamPanel);
     }
 
-    void addNewEmployee(String name, String role, int calification, String imagePath) {
-        _employeeTable.addNewEmployee(name, role, calification, imagePath);
+    void addNewEmployee(String name, String role, int calification) {
+        _employeeTable.addNewEmployee(name, role, calification);
     }
 
     void addNewIncompatibility(String firstEmployee, String secondEmployee) {
@@ -64,5 +64,10 @@ class TabMenu extends JTabbedPane {
 
         _teamStatus.setText("Optimal team found (" + result.team().size() + " members):");
         _teamTable.setTeam(result.team());
+    }
+
+    void clearAll() {
+        _employeeTable.clear();
+        _incompatibilityTable.clear();
     }
 }
