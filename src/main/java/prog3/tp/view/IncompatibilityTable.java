@@ -13,5 +13,4 @@ class IncompatibilityTable extends DataTable {
         Object[] row = {photo1, firstEmployee, photo2, secondEmployee};
         this.addNewRow(row);
     }
-
 }

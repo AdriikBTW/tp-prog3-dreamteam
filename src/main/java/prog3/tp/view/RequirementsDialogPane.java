@@ -20,8 +20,7 @@ class RequirementsDialogPane extends ToolbarDialogPane {
     void initComponents() {
         _spinners = new EnumMap<>(Role.class);
 
-        for (Role role : Role.values())
-            _spinners.put(role, createSpinner());
+        for (Role role : Role.values()) _spinners.put(role, createSpinner());
     }
 
     private JSpinner createSpinner() {
@@ -34,7 +33,7 @@ class RequirementsDialogPane extends ToolbarDialogPane {
 
     @Override
     void addComponents() {
-        for (Map.Entry<Role, JSpinner> entry: _spinners.entrySet()) {
+        for (Map.Entry<Role, JSpinner> entry : _spinners.entrySet()) {
             Role role = entry.getKey();
             JSpinner spinner = entry.getValue();
             this.addComponent("Amount of " + role + ": ", spinner);
@@ -44,7 +43,7 @@ class RequirementsDialogPane extends ToolbarDialogPane {
     Map<Role, Integer> getRequirements() {
         Map<Role, Integer> requirements = new EnumMap<>(Role.class);
 
-        for (Map.Entry<Role, JSpinner> entry: _spinners.entrySet()) {
+        for (Map.Entry<Role, JSpinner> entry : _spinners.entrySet()) {
             Role role = entry.getKey();
             int amount = (int) entry.getValue().getValue();
             requirements.put(role, amount);

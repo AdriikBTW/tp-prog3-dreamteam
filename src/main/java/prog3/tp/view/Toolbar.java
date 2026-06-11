@@ -37,11 +37,13 @@ class Toolbar extends JToolBar {
         EmployeeDialogPane dialog = new EmployeeDialogPane("New Employee");
 
         if (dialog.showDialog() == JOptionPane.OK_OPTION) {
-        	if (dialog.getName().isBlank()) showMessageError("Name field can't be empty.");
-        	//if (dialog.getName().trim().isEmpty()) showMessageError("Name field can't be empty.");
+            if (dialog.getName().isBlank()) showMessageError("Name field can't be empty.");
             else
                 _listener.onEmployeeAdded(
-                        dialog.getName(), dialog.getRole(), dialog.getCalification(), dialog.getImagePath());
+                        dialog.getName(),
+                        dialog.getRole(),
+                        dialog.getCalification(),
+                        dialog.getImagePath());
         }
     }
 
@@ -53,7 +55,8 @@ class Toolbar extends JToolBar {
 
     private void addNewIncompatibility() {
         List<String> names = _listener.getEmployeeNames();
-        IncompatibilityDialogPane dialog = new IncompatibilityDialogPane("New incompatibility", names);
+        IncompatibilityDialogPane dialog =
+                new IncompatibilityDialogPane("New incompatibility", names);
 
         if (dialog.showDialog() == JOptionPane.OK_OPTION) {
             String firstEmployee = dialog.getFirstEmployee();
@@ -87,7 +90,6 @@ class Toolbar extends JToolBar {
             _listener.onSolve();
         }
     }
-
 
     private void showMessageError(String text) {
         JOptionPane.showMessageDialog(null, text, "Error", JOptionPane.ERROR_MESSAGE);

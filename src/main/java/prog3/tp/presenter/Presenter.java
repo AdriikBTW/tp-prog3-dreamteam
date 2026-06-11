@@ -33,20 +33,23 @@ public class Presenter implements Observer {
 
     public List<EmployeeViewData> getEmployees() {
         return _model.getEmployees().stream()
-            .map(employee -> new EmployeeViewData(
-                        employee.getName(),
-                        employee.getRole().toString(),
-                        employee.getCalification()))
-            .toList();
+                .map(
+                        employee ->
+                                new EmployeeViewData(
+                                        employee.getName(),
+                                        employee.getRole().toString(),
+                                        employee.getCalification()))
+                .toList();
     }
 
     public List<IncompatibilityViewData> getIncompatibilities() {
         return _model.getIncompatibilities().stream()
-            .map(i -> new IncompatibilityViewData(
-                        i.getIncompatibilityEmployee1().getName(),
-                        i.getIncompatibilityEmployee2().getName()))
-            .toList();
-
+                .map(
+                        i ->
+                                new IncompatibilityViewData(
+                                        i.getIncompatibilityEmployee1().getName(),
+                                        i.getIncompatibilityEmployee2().getName()))
+                .toList();
     }
 
     public void addRequirements(Map<Role, Integer> requirements) {
@@ -60,21 +63,25 @@ public class Presenter implements Observer {
     public void solve() {
         _view.showSolving();
 
-        SolveWorker worker = new SolveWorker(
-                _model.getEmployees(),
-                _model.getRequirements(),
-                _model.getIncompatibilities(),
-                this::onSolverResult);
+        SolveWorker worker =
+                new SolveWorker(
+                        _model.getEmployees(),
+                        _model.getRequirements(),
+                        _model.getIncompatibilities(),
+                        this::onSolverResult);
         worker.execute();
     }
 
     private void onSolverResult(SolverResult solver) {
-        List<EmployeeViewData> result = solver.team().stream()
-            .map(e -> new EmployeeViewData(
-                        e.getName(),
-                        e.getRole().toString(),
-                        e.getCalification()))
-            .toList();
+        List<EmployeeViewData> result =
+                solver.team().stream()
+                        .map(
+                                e ->
+                                        new EmployeeViewData(
+                                                e.getName(),
+                                                e.getRole().toString(),
+                                                e.getCalification()))
+                        .toList();
         _view.showResult(result);
     }
 

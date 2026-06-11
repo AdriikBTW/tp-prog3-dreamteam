@@ -13,17 +13,13 @@ public enum Role {
     }
 
     public static Role toRole(String role) {
-        for (Role r : values())
-            if (r._value.equalsIgnoreCase(role))
-                    return r;
+        for (Role r : values()) if (r._value.equalsIgnoreCase(role)) return r;
 
         return null;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return _value;
     }
-
 }

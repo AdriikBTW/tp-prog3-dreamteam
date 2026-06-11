@@ -1,18 +1,17 @@
 package modelTest;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
-import org.junit.Before;          
-import org.junit.Test;            
-
-import prog3.tp.model.Employee;
-import prog3.tp.model.Incompatibility;
-import prog3.tp.model.TeamSolver;
-import prog3.tp.model.Role;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
+import org.junit.Before;
+import org.junit.Test;
+import prog3.tp.model.Employee;
+import prog3.tp.model.Incompatibility;
+import prog3.tp.model.Role;
+import prog3.tp.model.TeamSolver;
 
 public class TeamSolverTest {
 
@@ -50,7 +49,7 @@ public class TeamSolverTest {
         assertTrue(result.contains(john));
         assertTrue(result.contains(anna));
     }
-    
+
     @Test
     public void solve_IdealSelectionWithIncompatibilities() {
         Employee john = new Employee("John", Role.PROGRAMMER, 5);
@@ -78,10 +77,10 @@ public class TeamSolverTest {
         _requirements.put(Role.TESTER, 1);
         TeamSolver solver = new TeamSolver(_employees, _requirements, _incompatibilities);
         List<Employee> result = solver.solve();
-        
+
         assertTrue(result.isEmpty());
     }
-    
+
     @Test
     public void solve_IncompatibilityInTheSameRole() {
         Employee anna = new Employee("Anna", Role.TESTER, 5);
@@ -103,7 +102,7 @@ public class TeamSolverTest {
         assertTrue(result.contains(charlie));
         assertTrue(result.contains(luke));
     }
-    
+
     @Test
     public void solve_IgnoresUnrequiredRoles() {
         Employee anna = new Employee("Anna", Role.TEAM_LEADER, 4);
@@ -118,7 +117,7 @@ public class TeamSolverTest {
         assertEquals(1, result.size());
         assertTrue(result.contains(peter));
     }
-    
+
     @Test
     public void Solve_TotalIncompatibilityMakesTeamUnviable() {
         Employee anna = new Employee("Anna", Role.TEAM_LEADER, 5);
@@ -130,10 +129,10 @@ public class TeamSolverTest {
         _incompatibilities.add(new Incompatibility(anna, charlie));
         TeamSolver solver = new TeamSolver(_employees, _requirements, _incompatibilities);
         List<Employee> result = solver.solve();
-        
+
         assertTrue(result.isEmpty());
     }
-    
+
     @Test(expected = IllegalArgumentException.class)
     public void TeamSolver_EmployeesNull_ThrowException() {
         new TeamSolver(null, _requirements, _incompatibilities);

@@ -61,9 +61,7 @@ public class Window implements View, ToolbarListener {
 
     @Override
     public List<String> getEmployeeNames() {
-        return _presenter.getEmployees().stream()
-            .map(e -> e.getName())
-            .toList();
+        return _presenter.getEmployees().stream().map(e -> e.getName()).toList();
     }
 
     @Override

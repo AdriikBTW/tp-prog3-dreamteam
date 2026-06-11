@@ -7,6 +7,7 @@ import javax.swing.JButton;
 
 class ToolbarButton extends JButton {
     private Font _font;
+
     public ToolbarButton(String text) {
         super(text);
         loadFont();
@@ -23,6 +24,5 @@ class ToolbarButton extends JButton {
         } catch (Exception e) {
             _font = new Font("SansSerif", Font.PLAIN, 25);
         }
-
     }
 }

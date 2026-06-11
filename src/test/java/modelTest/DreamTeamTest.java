@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
+
 import java.util.EnumMap;
 import org.junit.Before;
 import org.junit.Test;
@@ -142,8 +143,7 @@ public class DreamTeamTest {
     public void setRequirementsTest() {
         Role[] roles = Role.values();
 
-        for (Role role : roles)
-            _dreamTeam.setRequirement(role, 1);
+        for (Role role : roles) _dreamTeam.setRequirement(role, 1);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -197,5 +197,4 @@ public class DreamTeamTest {
         _dreamTeam.addEmployee("Linus", Role.PROGRAMMER.toString(), 5);
         _dreamTeam.findEmployeeByName("Adrián");
     }
-
 }

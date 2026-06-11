@@ -17,9 +17,6 @@ public class DreamTeam implements Model {
         _employees = new ArrayList<>();
         List_incompatibility = new ArrayList<>();
         _requirements = new EnumMap<>(Role.class);
-        // NOTE: we need to think about the design of this. by design we should
-        // force that must be at least one of each role, or we can create teams
-        // with no specific roles, for example with no testers?
         for (Role r : Role.values()) {
             _requirements.put(r, 1);
         }
@@ -52,11 +49,6 @@ public class DreamTeam implements Model {
     }
 
     public int getRequiredCount(Role role) {
-        // NOTE: the constructor creates a requirement with each role having an
-        // amount of one, so it is impossible to return 0.
-        // if (_requirements.containsKey(role)) {
-        //      return _requirements.get(role);
-        // } else return 0;
         return _requirements.get(role);
     }
 
@@ -73,7 +65,7 @@ public class DreamTeam implements Model {
             }
         }
 
-        throw new IllegalArgumentException("Nombre de empleado no existe");
+        throw new IllegalArgumentException("Employee name does not exist.");
     }
 
     public List<Employee> getEmployees() {
@@ -90,8 +82,7 @@ public class DreamTeam implements Model {
     }
 
     private void notifyObservers() {
-        for (Observer o : _observers)
-            o.update();
+        for (Observer o : _observers) o.update();
     }
 
     public void removeObserver(Observer observer) {

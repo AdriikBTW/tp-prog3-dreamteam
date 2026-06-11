@@ -18,16 +18,19 @@ public class TeamSolver {
     private Map<Employee, Set<Employee>> _incompatMap = new HashMap<>();
     private int[] _maxRemainingFromIndex;
 
-    public TeamSolver(List<Employee> employees, EnumMap<Role, Integer> reqs, List<Incompatibility> incompatibilities) {
+    public TeamSolver(
+            List<Employee> employees,
+            EnumMap<Role, Integer> reqs,
+            List<Incompatibility> incompatibilities) {
         if (employees == null || reqs == null || incompatibilities == null) {
-			throw new IllegalArgumentException("Arguments cannot be null");
-		}
+            throw new IllegalArgumentException("Arguments cannot be null");
+        }
         _allEmployees = new ArrayList<>(employees);
 
         _requirements = new EnumMap<>(reqs);
 
         _incompatibilities = new ArrayList<>(incompatibilities);
-        
+
         for (Incompatibility inc : _incompatibilities) {
             Employee e1 = inc.getIncompatibilityEmployee1();
             Employee e2 = inc.getIncompatibilityEmployee2();
@@ -40,9 +43,9 @@ public class TeamSolver {
         _maxRemainingFromIndex = new int[n + 1];
         _maxRemainingFromIndex[n] = 0;
         for (int i = n - 1; i >= 0; --i) {
-            _maxRemainingFromIndex[i] = _maxRemainingFromIndex[i + 1] + _allEmployees.get(i).getCalification();
+            _maxRemainingFromIndex[i] =
+                    _maxRemainingFromIndex[i + 1] + _allEmployees.get(i).getCalification();
         }
-        
 
         for (Role role : Role.values()) {
             _currentCounts.put(role, 0);
@@ -68,7 +71,7 @@ public class TeamSolver {
         }
 
         if (index == _allEmployees.size()) {
-            return; 
+            return;
         }
 
         Employee candidate = _allEmployees.get(index);
@@ -78,7 +81,7 @@ public class TeamSolver {
         int requiredCount = _requirements.getOrDefault(role, 0);
 
         if (currentCount < requiredCount && isCompatible(candidate, currentTeam)) {
-            
+
             currentTeam.add(candidate);
             _currentCounts.put(role, currentCount + 1);
 

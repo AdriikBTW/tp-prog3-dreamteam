@@ -14,9 +14,11 @@ public class EmployeeViewData {
     public String getName() {
         return _name;
     }
+
     public String getRole() {
         return _role;
     }
+
     public int getCalification() {
         return _calification;
     }

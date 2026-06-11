@@ -51,8 +51,7 @@ class EmployeeDialogPane extends ToolbarDialogPane {
     private void initRoleField() {
         String[] items = new String[Role.values().length];
 
-        for (int i = 0; i < Role.values().length; i++)
-            items[i] = Role.values()[i].toString();
+        for (int i = 0; i < Role.values().length; i++) items[i] = Role.values()[i].toString();
 
         _role = new JComboBox<>(items);
     }
