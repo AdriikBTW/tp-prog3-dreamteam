@@ -23,11 +23,11 @@ public class Incompatibility {
         return ret;
     }
 
-    public Employee getIncompabilityEmployee1() {
+    public Employee getIncompatibilityEmployee1() {
         return _employee1;
     }
 
-    public Employee getIncompabilityEmployee2() {
+    public Employee getIncompatibilityEmployee2() {
         return _employee2;
     }
 }

@@ -18,19 +18,19 @@ public class IncompatibilityTest {
     }
 
     @Test
-    public void getIncompabilityEmployee1_returnsFirstEmployee() {
+    public void getIncompatibilityEmployee1_returnsFirstEmployee() {
         Employee emp1 = createEmployee("Alice", "Programmer", 4);
         Employee emp2 = createEmployee("Bob", "Tester", 3);
         Incompatibility inc = new Incompatibility(emp1, emp2);
-        assertEquals(emp1, inc.getIncompabilityEmployee1());
+        assertEquals(emp1, inc.getIncompatibilityEmployee1());
     }
 
     @Test
-    public void getIncompabilityEmployee2_returnsSecondEmployee() {
+    public void getIncompatibilityEmployee2_returnsSecondEmployee() {
         Employee emp1 = createEmployee("Alice", "Programmer", 4);
         Employee emp2 = createEmployee("Bob", "Tester", 3);
         Incompatibility inc = new Incompatibility(emp1, emp2);
-        assertEquals(emp2, inc.getIncompabilityEmployee2());
+        assertEquals(emp2, inc.getIncompatibilityEmployee2());
     }
 
     @Test

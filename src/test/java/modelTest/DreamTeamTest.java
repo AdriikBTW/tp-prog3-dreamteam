@@ -74,8 +74,8 @@ public class DreamTeamTest {
         Employee bob = addEmployee("Bob", "Tester", 3);
         _dreamTeam.addIncompatibility(alice, bob);
         Incompatibility inc = _dreamTeam.getIncompatibilities().get(0);
-        assertEquals(alice, inc.getIncompabilityEmployee1());
-        assertEquals(bob, inc.getIncompabilityEmployee2());
+        assertEquals(alice, inc.getIncompatibilityEmployee1());
+        assertEquals(bob, inc.getIncompatibilityEmployee2());
     }
 
     @Test

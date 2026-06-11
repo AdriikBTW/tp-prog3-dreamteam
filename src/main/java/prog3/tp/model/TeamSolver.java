@@ -29,8 +29,8 @@ public class TeamSolver {
         _incompatibilities = new ArrayList<>(incompatibilities);
         
         for (Incompatibility inc : _incompatibilities) {
-            Employee e1 = inc.getIncompabilityEmployee1();
-            Employee e2 = inc.getIncompabilityEmployee2();
+            Employee e1 = inc.getIncompatibilityEmployee1();
+            Employee e2 = inc.getIncompatibilityEmployee2();
 
             _incompatMap.computeIfAbsent(e1, k -> new HashSet<>()).add(e2);
             _incompatMap.computeIfAbsent(e2, k -> new HashSet<>()).add(e1);
