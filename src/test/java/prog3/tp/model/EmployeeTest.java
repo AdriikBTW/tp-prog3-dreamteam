@@ -1,4 +1,4 @@
-package modelTest;
+package prog3.tp.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -6,8 +6,6 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import prog3.tp.model.DreamTeam;
-import prog3.tp.model.Employee;
 
 public class EmployeeTest {
     private Employee createEmployee(String name, String role, int calification) {

@@ -1,13 +1,10 @@
-package modelTest;
+package prog3.tp.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import prog3.tp.model.DreamTeam;
-import prog3.tp.model.Employee;
-import prog3.tp.model.Incompatibility;
 
 public class IncompatibilityTest {
     private Employee createEmployee(String name, String role, int calification) {

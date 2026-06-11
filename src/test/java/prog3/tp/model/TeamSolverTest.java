@@ -1,4 +1,4 @@
-package modelTest;
+package prog3.tp.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -8,10 +8,6 @@ import java.util.EnumMap;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
-import prog3.tp.model.Employee;
-import prog3.tp.model.Incompatibility;
-import prog3.tp.model.Role;
-import prog3.tp.model.TeamSolver;
 
 public class TeamSolverTest {
 
