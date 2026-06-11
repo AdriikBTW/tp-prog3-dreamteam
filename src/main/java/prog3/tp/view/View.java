@@ -1,6 +1,7 @@
 package prog3.tp.view;
 
-import prog3.tp.model.SolverResult;
+import java.util.List;
+import prog3.tp.presenter.EmployeeViewData;
 import prog3.tp.presenter.Presenter;
 
 public interface View {
@@ -10,5 +11,5 @@ public interface View {
 
     void showSolving();
 
-    void showResult(SolverResult result);
+    void showResult(List<EmployeeViewData> result);
 }

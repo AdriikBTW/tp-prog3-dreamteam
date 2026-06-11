@@ -68,7 +68,13 @@ public class Presenter implements Observer {
         worker.execute();
     }
 
-    private void onSolverResult(SolverResult result) {
+    private void onSolverResult(SolverResult solver) {
+        List<EmployeeViewData> result = solver.team().stream()
+            .map(e -> new EmployeeViewData(
+                        e.getName(),
+                        e.getRole().toString(),
+                        e.getCalification()))
+            .toList();
         _view.showResult(result);
     }
 

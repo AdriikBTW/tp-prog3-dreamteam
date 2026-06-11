@@ -1,11 +1,12 @@
 package prog3.tp.view;
 
 import java.awt.BorderLayout;
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
-import prog3.tp.model.SolverResult;
+import prog3.tp.presenter.EmployeeViewData;
 
 class TabMenu extends JTabbedPane {
     private EmployeeTable _employeeTable;
@@ -55,15 +56,15 @@ class TabMenu extends JTabbedPane {
         _teamTable.clear();
     }
 
-    void showTeamResult(SolverResult result) {
-        if (result.team().isEmpty()) {
+    void showTeamResult(List<EmployeeViewData> result) {
+        if (result.isEmpty()) {
             _teamStatus.setText("No feasible team found.");
             _teamTable.clear();
             return;
         }
 
-        _teamStatus.setText("Optimal team found (" + result.team().size() + " members):");
-        _teamTable.setTeam(result.team());
+        _teamStatus.setText("Optimal team found (" + result.size() + " members):");
+        _teamTable.setTeam(result);
     }
 
     void clearAll() {

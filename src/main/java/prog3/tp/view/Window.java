@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import prog3.tp.model.Role;
-import prog3.tp.model.SolverResult;
 import prog3.tp.presenter.EmployeeViewData;
 import prog3.tp.presenter.IncompatibilityViewData;
 import prog3.tp.presenter.Presenter;
@@ -111,7 +110,7 @@ public class Window implements View, ToolbarListener {
     }
 
     @Override
-    public void showResult(SolverResult result) {
+    public void showResult(List<EmployeeViewData> result) {
         _tabs.showTeamResult(result);
     }
 }

@@ -1,7 +1,6 @@
 package prog3.tp.view;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
