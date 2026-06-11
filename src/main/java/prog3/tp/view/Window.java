@@ -56,8 +56,8 @@ public class Window implements View, ToolbarListener {
 
     @Override
     public void onEmployeeAdded(String name, String role, int calification, String imagePath) {
-        _presenter.addEmployee(name, role, calification);
         ImageRegistry.register(name, imagePath);
+        _presenter.addEmployee(name, role, calification);
     }
 
     @Override
