@@ -1,6 +1,7 @@
 package modelTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import java.util.EnumMap;
@@ -51,6 +52,21 @@ public class DreamTeamTest {
         _dreamTeam.addObserver(observer);
         _dreamTeam.addEmployee("Alice", "Programmer", 4);
         assertTrue(observer.updated);
+    }
+
+    @Test
+    public void removeObserverTest() {
+        TestObserver observer1 = new TestObserver();
+        TestObserver observer2 = new TestObserver();
+
+        _dreamTeam.addObserver(observer1);
+        _dreamTeam.addObserver(observer2);
+        _dreamTeam.removeObserver(observer1);
+
+        _dreamTeam.addEmployee("Linus", "Programmer", 5);
+
+        assertFalse(observer1.updated);
+        assertTrue(observer2.updated);
     }
 
     @Test
